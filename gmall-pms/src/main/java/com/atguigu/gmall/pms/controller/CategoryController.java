@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,6 +33,14 @@ import com.atguigu.gmall.pms.service.CategoryService;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
+    //自己写的方法开始
+    @GetMapping
+    public Resp<List<CategoryEntity>> queryCategory(@RequestParam(value = "level",defaultValue = "0")Integer level,@RequestParam(value = "parentCid",required = false)Long parentCid){
+        List<CategoryEntity> list = categoryService.queryCategory(level,parentCid);
+        return Resp.ok(list);
+    }
+    //自己写的方法结束
 
     /**
      * 列表
