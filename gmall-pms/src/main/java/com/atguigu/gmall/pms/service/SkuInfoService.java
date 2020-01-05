@@ -5,6 +5,8 @@ import com.atguigu.gmall.pms.entity.SkuInfoEntity;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 
+import java.util.List;
+
 
 /**
  * sku信息

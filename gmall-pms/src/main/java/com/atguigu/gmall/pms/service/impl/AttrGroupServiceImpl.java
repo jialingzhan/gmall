@@ -81,4 +81,15 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         return attrGroupVo;
     }
 
+    @Override
+    public List<AttrGroupVo> querySpuByCid(Long cid) {
+        //先求出gid
+        List<AttrGroupEntity> attrGroupEntities = attrGroupDao.selectList(new QueryWrapper<AttrGroupEntity>().eq("catelog_id", cid));
+        List<AttrGroupVo> attrGroupVos = attrGroupEntities.stream().map(attrGroupEntity -> {
+            AttrGroupVo attrGroupVo = queryById(attrGroupEntity.getAttrGroupId());
+            return attrGroupVo;
+        }).collect(Collectors.toList());
+        return attrGroupVos;
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -8,6 +9,7 @@ import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
 import com.atguigu.gmall.pms.entity.AttrAttrgroupRelationEntity;
+import com.atguigu.gmall.pms.entity.ProductAttrValueEntity;
 import com.atguigu.gmall.pms.vo.AttrGroupVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,6 +48,12 @@ public class AttrGroupController {
     public Resp<AttrGroupVo> queryById(@PathVariable("gid")Long gid){
         AttrGroupVo attrGroupVo = attrGroupService.queryById(gid);
         return Resp.ok(attrGroupVo);
+    }
+
+    @GetMapping("withattrs/cat/{cId}")
+    public Resp<List<AttrGroupVo>> querySpuByCid(@PathVariable("cId")Long cid){
+        List<AttrGroupVo> attrGroupVoList = attrGroupService.querySpuByCid(cid);
+        return Resp.ok(attrGroupVoList);
     }
     //自己写的方法结束
 
